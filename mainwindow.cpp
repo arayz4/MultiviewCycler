@@ -40,7 +40,7 @@ void MainWindow::makeMenu()
     QObject::connect(act_openimage,SIGNAL(triggered()),this, SLOT(slot_openimage()));
 
     act_open9images = new QAction(tr("&Open 9 Images"), this);
-    QObject::connect(act_openimage,SIGNAL(triggered()),this, SLOT(slot_openimage()));
+    QObject::connect(act_open9images,SIGNAL(triggered()),this, SLOT(slot_open9images()));
 
     act_fullscreen = new QAction(tr("&FullScreen"), this);
     act_fullscreen->setCheckable(true);

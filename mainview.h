@@ -5,9 +5,12 @@
 #include <QWidget>
 #include <QLabel>
 #include <QPixmap>
+#include <QImage>
 #include <QDebug>
 #include <QFileDialog>
 #include <QMenu>
+
+#include "imageProcess/excom.h"
 
 class MainWindow;
 class MainStage : public QWidget
@@ -20,7 +23,8 @@ public:
     MainWindow *p_mainwindow;
 
     QPixmap *img;
-    QLabel *l1;
+
+    Excom *excom;
 
     int pressed_xpos;
     int pressed_ypos;

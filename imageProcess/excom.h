@@ -4,6 +4,7 @@
 #include <QtGui>
 #include <QWidget>
 #include <QPixmap>
+#include <QImage>
 #include <QDebug>
 #include <QMenu>
 
@@ -14,6 +15,8 @@ class Excom : public QWidget
 
 public:
     Excom(QWidget *parent = 0);
+
+    QImage testMirror(QStringList);
 
     MainStage *p_mainwindow;
 
