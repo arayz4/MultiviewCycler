@@ -21,11 +21,12 @@ QImage Excom::testMirror(QStringList slist)
 //FIX input 9 / display regular
 QImage Excom::combine_01(QStringList slist)
 {
-    if(slist.size() != 9)
+    int picsize = 9;
+    if(slist.size() != picsize)
         return QImage();
 
-    QVector<QImage> array_img(9);
-    for ( int i = 0; i < 9; i++){
+    QVector<QImage> array_img(picsize);
+    for ( int i = 0; i < picsize; i++){
         array_img[i].load(slist[i]);
     }
 
@@ -34,7 +35,7 @@ QImage Excom::combine_01(QStringList slist)
     int fhig = array_img.first().height();
 
     //Width check
-    for ( int i = 1; i < 9; i++){
+    for ( int i = 1; i < picsize; i++){
         if(fwid != array_img[i].width())
         {
             qDebug() << "Please, make sure every image same size";
@@ -43,7 +44,7 @@ QImage Excom::combine_01(QStringList slist)
     }
 
     //Height check
-    for ( int i = 1; i < 9; i++){
+    for ( int i = 1; i < picsize; i++){
         if(fhig != array_img[i].height())
         {
             qDebug() << "Please, make sure every image same size";
@@ -56,6 +57,12 @@ QImage Excom::combine_01(QStringList slist)
     qDebug() << "go fuck ur self bitch";
 
     blankImage.fill(QColor(100,255,100,255));
+
+    for (int y = 0; y < fhig; y++){
+        for (int x = 0; x < fwid; x++){
+
+        }
+    }
 
 
 
