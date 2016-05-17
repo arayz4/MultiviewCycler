@@ -39,6 +39,9 @@ void MainWindow::makeMenu()
     act_openimage = new QAction(tr("&Open Image"), this);
     QObject::connect(act_openimage,SIGNAL(triggered()),this, SLOT(slot_openimage()));
 
+    act_open9images = new QAction(tr("&Open 9 Images"), this);
+    QObject::connect(act_openimage,SIGNAL(triggered()),this, SLOT(slot_openimage()));
+
     act_fullscreen = new QAction(tr("&FullScreen"), this);
     act_fullscreen->setCheckable(true);
     QObject::connect(act_fullscreen,SIGNAL(triggered()), this, SLOT(slot_fullscreen()));
@@ -47,6 +50,8 @@ void MainWindow::makeMenu()
     QObject::connect(act_quit,SIGNAL(triggered()),this, SLOT(slot_quitApp()));
 
     menu1->addAction(act_openimage);
+    menu1->addSeparator();
+    menu1->addAction(act_open9images);
     menu1->addSeparator();
     menu1->addAction(act_fullscreen);
     menu1->addSeparator();
@@ -62,6 +67,11 @@ void MainWindow::makeMenu()
 void MainWindow::slot_openimage()
 {
     mainview->loadImgbox();
+}
+
+void MainWindow::slot_open9images()
+{
+    mainview->loadImgsbox();
 }
 
 void MainWindow::slot_fullscreen()

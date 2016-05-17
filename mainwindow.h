@@ -20,11 +20,13 @@ public:
     void makeMenu();
     QMenuBar *menubar;
     QAction *act_openimage;
+    QAction *act_open9images;
     QAction *act_fullscreen;
     QAction *act_quit;
 
 public slots:
     void slot_openimage();
+    void slot_open9images();
     void slot_fullscreen();
     void slot_quitApp();
 

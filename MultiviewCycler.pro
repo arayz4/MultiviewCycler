@@ -18,3 +18,6 @@ SOURCES += main.cpp\
 
 HEADERS  += mainwindow.h \
     mainview.h
+
+# subdir source & header files
+include(imageProcess/excom.pri)

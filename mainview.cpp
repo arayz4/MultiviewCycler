@@ -22,7 +22,7 @@ bool MainStage::loadImgbox()
         QString strSelectedFilter;
         QString strFName = QFileDialog::getOpenFileName(
                 this,
-                tr( "Open Image file" ),
+                tr( "Open single Image file" ),
                 ".",
                 tr( "*.jpg" ),
                 &strSelectedFilter, options );
@@ -42,6 +42,23 @@ bool MainStage::loadImage(QString filepath)
     success = img->load(filepath);
     qDebug() << "img loadin : " << success;
     return success;
+}
+
+void MainStage::loadImgsbox()
+{
+    QFileDialog::Options options;
+        QString strSelectedFilter;
+        QStringList strFNames = QFileDialog::getOpenFileNames(
+                this,
+                tr( "Select 9 Image files" ),
+                ".",
+                tr( "*.jpg" ),
+                &strSelectedFilter, options );
+
+    if(strFNames.isEmpty())
+        return;
+    else
+        qDebug() << "FilePath" << strFNames;
 }
 
 //ショートカットキー
@@ -109,6 +126,7 @@ void MainStage::mouseDoubleClickEvent(QMouseEvent *event){
 void MainStage::contextMenuEvent(QContextMenuEvent *event){
     QMenu *menuRight  = new QMenu(this);\
     menuRight->addAction(p_mainwindow->act_openimage);
+    menuRight->addAction(p_mainwindow->act_open9images);
     menuRight->addAction(p_mainwindow->act_fullscreen);
     menuRight->addAction(p_mainwindow->act_quit);
 

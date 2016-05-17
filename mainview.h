@@ -28,7 +28,8 @@ public:
     int current_ypos;
     bool flag_left_down;
 
-    bool loadImgbox();
+    bool loadImgbox();\
+    void loadImgsbox();
     bool loadImage(QString);
 
     void connectKeyEvent(QKeyEvent *event);

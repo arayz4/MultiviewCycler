@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
     dark_palette.setColor(QPalette::Disabled,QPalette::Text,QColor(20,20,20,0));
     dark_palette.setColor(QPalette::Disabled,QPalette::Base,QColor(20,20,20,0));
     dark_palette.setColor(QPalette::Disabled,QPalette::Button,QColor(20,20,20,0));
-    //w.setPalette(dark_palette);
+    w.setPalette(dark_palette);
 
     //Launch position
     w.setGeometry(100,100,400,300);
