@@ -22,7 +22,7 @@ public:
 
     MainWindow *p_mainwindow;
 
-    QPixmap *img;
+    QImage *img;
 
     Excom *excom;
 

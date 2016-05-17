@@ -3,10 +3,10 @@
 
 #include <QtGui>
 #include <QWidget>
-#include <QPixmap>
 #include <QImage>
 #include <QDebug>
 #include <QMenu>
+#include <QVector>
 
 class MainStage;
 class Excom : public QWidget
@@ -17,6 +17,7 @@ public:
     Excom(QWidget *parent = 0);
 
     QImage testMirror(QStringList);
+    QImage combine_01(QStringList);
 
     MainStage *p_mainwindow;
 

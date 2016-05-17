@@ -4,7 +4,7 @@
 MainStage::MainStage(QWidget *parent)
     : QWidget(parent)
 {
-    img = new QPixmap;
+    img = new QImage;
     excom = new Excom;
 }
 
@@ -12,12 +12,14 @@ void MainStage::paintEvent(QPaintEvent *)//描画イベント
 {
     QPainter paint;
     paint.begin(this);
-    if(!img->isNull())paint.drawPixmap(0,0,img->width(),img->height(),*img);
+    if(!img->isNull()){
+        paint.drawImage(0,0,*img);
+    }
     paint.end();
 }
 
 bool MainStage::loadImgbox()
-{qDebug() << "loadImgbox";
+{
     QFileDialog::Options options;
         QString strSelectedFilter;
         QString strFName = QFileDialog::getOpenFileName(
@@ -26,8 +28,6 @@ bool MainStage::loadImgbox()
                 ".",
                 tr( "*.jpg" ),
                 &strSelectedFilter, options );
-
-    qDebug() << "FilePath" << strFName;
 
     if(strFName.isEmpty())
         return false;
@@ -40,7 +40,6 @@ bool MainStage::loadImage(QString filepath)
 {
     bool success;
     success = img->load(filepath);
-    qDebug() << "img loadin : " << success;
     return success;
 }
 
@@ -55,18 +54,14 @@ void MainStage::loadImgsbox()
                 tr( "*.jpg" ),
                 &strSelectedFilter, options );
 
-    if(strFNames.isEmpty()){
+    if(strFNames.isEmpty() || strFNames.size() != 9){
         return;
     }else{
-        QImage tmp;
-        tmp = excom->testMirror(strFNames);
-        QPixmap pixmap = QPixmap::fromImage(tmp);
-        //結果のPIXMAPをペイントするひつようがある
-        qDebug() << "mirror dekita hazu";
+        *img = excom->combine_01(strFNames);
     }
 }
 
-//ショートカットキー
+//-----------SHORT CUT KEY ASSIGN--------------//
 void MainStage::connectKeyEvent(QKeyEvent *event)
 {
     this->keyPressEvent(event);
@@ -91,6 +86,7 @@ void MainStage::keyPressEvent(QKeyEvent *event)
     }
 }
 
+//--------------MOUSE KEY ASSIGN---------------//
 void MainStage::mousePressEvent(QMouseEvent *event){
     this->setFocus();
 
