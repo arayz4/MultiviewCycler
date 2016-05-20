@@ -38,7 +38,7 @@ QImage Excom::combine_01(QStringList slist)
     for ( int i = 1; i < picsize; i++){
         if(fwid != array_img[i].width())
         {
-            qDebug() << "Please, make sure every image same size";
+            qDebug() << "Please, make sure every image is same size";
             return QImage();
         }
     }
@@ -47,20 +47,28 @@ QImage Excom::combine_01(QStringList slist)
     for ( int i = 1; i < picsize; i++){
         if(fhig != array_img[i].height())
         {
-            qDebug() << "Please, make sure every image same size";
+            qDebug() << "Please, make sure every image is same size";
             return QImage();
         }
     }
 
     QImage blankImage(fwid,fhig,array_img.first().format());
 
-    qDebug() << "go fuck ur self bitch";
-
     blankImage.fill(QColor(100,255,100,255));
 
-    for (int y = 0; y < fhig; y++){
-        for (int x = 0; x < fwid; x++){
+    int shiftnum;
 
+    for (int y = 0; y < fhig; y++){
+        shiftnum = 0;
+
+        for (int x = 0; x < fwid; x++){
+            blankImage.setPixel(x,y,array_img.at(shiftnum).pixel(x,y));
+
+            if(shiftnum < picsize - 1){
+                shiftnum++;
+            }else{
+                shiftnum = 0;
+            }
         }
     }
 
